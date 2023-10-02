@@ -1,9 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
-mkdir tempdir
-mkdir tempdir/templates
-mkdir tempdir/static
+mkdir tempdir 2>/dev/null
+mkdir tempdir/templates 2>/dev/null
+mkdir tempdir/static 2>/dev/null
 
 cp sample_app.py tempdir/.
 cp -r templates/* tempdir/templates/.
