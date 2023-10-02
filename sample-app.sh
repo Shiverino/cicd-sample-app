@@ -21,5 +21,17 @@ _EOF_
 
 cd tempdir || exit
 docker build -t sampleapp .
+
+container_name="samplerunning"
+
+# Controleer of de container bestaat
+if docker ps -a --format '{{.Names}}' | grep -Eq "^$container_name$"; then
+    # Verwijder de container als deze bestaat
+    docker rm -f "$container_name"
+    echo "Container $container_name is verwijderd."
+else
+    echo "Container $container_name bestaat niet."
+fi
+
 docker run -t -d -p 5050:5050 --name samplerunning sampleapp
 docker ps -a 
